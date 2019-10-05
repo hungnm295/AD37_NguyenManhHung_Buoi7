@@ -1,5 +1,6 @@
 package com.example.ad37_nguyenmanhhung_buoi7;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,6 +29,8 @@ public class SendMessage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
         initView();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         final Intent intent = getIntent();
         int position = intent.getIntExtra(Constant.POSITION, 0);

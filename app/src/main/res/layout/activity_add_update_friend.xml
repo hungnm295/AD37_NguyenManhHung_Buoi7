@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".AddUpdateFriend">
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
@@ -28,5 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Add"/>
+        android:text="Add"
+        android:background="@drawable/background_add_button"/>
 </LinearLayout>

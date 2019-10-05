@@ -1,9 +1,11 @@
 package com.example.ad37_nguyenmanhhung_buoi7;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -15,21 +17,21 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Friend>  friendList;
+    ArrayList<Friend>  friendList = new ArrayList<>();
+    ArrayList<Message> messageList = new ArrayList<>();
     BottomNavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Messenger");
+        //Start at Friend Fragment
+        getFragment(new FriendFragment());
 
-        friendList = new ArrayList<>();
         friendList.add(new Friend("Mr A", true));
         friendList.add(new Friend("Mr B", true));
         friendList.add(new Friend("Mr C", true));
         friendList.add(new Friend("Mr D", true));
-
-        getFragment(new FriendFragment());
 
         navigationView = findViewById(R.id.navMenu);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     public void getFragment(Fragment fragment){
@@ -62,5 +65,25 @@ public class MainActivity extends AppCompatActivity {
         return friendList;
     }
 
+    public ArrayList<Message> getMessageList() {
+        return messageList;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case RESULT_OK:
+                if (requestCode == Constant.REQUEST_CODE_SMS){
+                    messageList.add(new Message(data.getStringExtra(Constant.NAME_SEND)
+                            , data.getStringExtra(Constant.CONTENT)
+                            , data.getBooleanExtra(Constant.ICON, true)));
+                } else {
+                    messageList.add(new Message(data.getStringExtra(Constant.NAME_SEND)
+                            , data.getStringExtra(Constant.CONTENT)
+                            , data.getBooleanExtra(Constant.ICON, false)));
+                }
+        }
+    }
 }
 

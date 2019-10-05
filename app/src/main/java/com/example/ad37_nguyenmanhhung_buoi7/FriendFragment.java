@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-
 import static android.app.Activity.RESULT_OK;
 
 public class FriendFragment extends Fragment {
@@ -66,7 +63,7 @@ public class FriendFragment extends Fragment {
                                 intent1.putExtra(Constant.SEND, "SMS");
                                 intent1.putExtra(Constant.POSITION, position);
                                 intent1.putExtra(Constant.FRIEND_LIST, friendList);
-                                startActivity(intent1);
+                                startActivityForResult(intent1, Constant.REQUEST_CODE_SMS);
                                 break;
                             case R.id.mnEdit:
                                 Intent intent2 = new Intent(getActivity(), AddUpdateFriend.class);

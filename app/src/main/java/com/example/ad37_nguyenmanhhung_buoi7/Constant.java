@@ -12,5 +12,6 @@ public class Constant {
     public static final String NAME = "name";
     public static final String NAME_SEND = "name send";
     public static final String CONTENT = "content";
+    public static final String ICON = "icon";
 
 }

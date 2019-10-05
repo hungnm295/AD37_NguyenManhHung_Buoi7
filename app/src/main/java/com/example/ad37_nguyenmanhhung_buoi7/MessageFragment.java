@@ -39,7 +39,7 @@ public class MessageFragment extends Fragment {
         rvMessageList = view.findViewById(R.id.rvMessageList);
         mSend = view.findViewById(R.id.mSend);
 
-        messageList = new ArrayList<>();
+        messageList = ((MainActivity)getActivity()).getMessageList();
         messageAdapter = new MessageAdapter(messageList, getActivity());
         rvMessageList.setAdapter(messageAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -83,7 +83,7 @@ public class MessageFragment extends Fragment {
         });
     }
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
@@ -98,5 +98,5 @@ public class MessageFragment extends Fragment {
                     messageAdapter.notifyDataSetChanged();
                 }
         }
-    }
+    }*/
 }

@@ -2,11 +2,9 @@ package com.example.ad37_nguyenmanhhung_buoi7;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,7 +36,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         holder.tvMessage.setText(message.getName()+": "+message.getMessage());
         if (message.isIcon()){
             holder.imgType.setImageResource(R.drawable.ic_message);
-        }else{
+        } else {
             holder.imgType.setImageResource(R.drawable.ic_email);
         }
     }

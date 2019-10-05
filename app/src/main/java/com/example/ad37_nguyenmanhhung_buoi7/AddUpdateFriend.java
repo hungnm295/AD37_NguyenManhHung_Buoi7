@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddUpdateFriend extends AppCompatActivity {
+    TextView tvName;
     EditText edtName;
     Button btnAction;
 
@@ -21,9 +23,11 @@ public class AddUpdateFriend extends AppCompatActivity {
         Intent intent = getIntent();
         String mName = intent.getStringExtra("name");
         if (mName.equals("")) {
+            tvName.setText("Add New Friend");
             btnAction.setText("Add");
             setTitle("Add Friend");
         } else {
+            tvName.setText("Edit Friend");
             btnAction.setText("Update");
             edtName.setText(mName);
             setTitle("Edit Friend");
@@ -48,6 +52,7 @@ public class AddUpdateFriend extends AppCompatActivity {
     }
 
     public void initView() {
+        tvName = findViewById(R.id.tvName);
         edtName = findViewById(R.id.edtName);
         btnAction = findViewById(R.id.btnAction);
     }

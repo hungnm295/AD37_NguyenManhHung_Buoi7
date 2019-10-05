@@ -11,6 +11,7 @@
         app:menu="@menu/nav_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         app:itemTextColor="@color/colorAccent"/>
     <FrameLayout
         android:id="@+id/fragment_container"

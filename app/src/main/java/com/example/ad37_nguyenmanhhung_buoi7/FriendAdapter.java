@@ -39,7 +39,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public void onBindViewHolder(@NonNull FriendAdapter.ViewHolder holder, final int position) {
         final Friend friend = friendList.get(position);
         holder.tvName.setText(friend.getName());
-        if (friend.isIcon()){
+        if (friend.isIcon()) {
             holder.imgIcon.setImageResource(R.drawable.ic_facebook);
         }
         holder.tvName.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +59,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         ImageView imgIcon;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);

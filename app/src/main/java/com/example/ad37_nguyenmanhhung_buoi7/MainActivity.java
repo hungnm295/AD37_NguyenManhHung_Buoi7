@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,15 +12,16 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.io.FileInputStream;
 import java.util.ArrayList;
+
+import static com.example.ad37_nguyenmanhhung_buoi7.R.id.fragment_friend;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Friend>  friendList = new ArrayList<>();
+    ArrayList<Friend> friendList = new ArrayList<>();
     ArrayList<Message> messageList = new ArrayList<>();
     BottomNavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.mnFriends:
                         getFragment(new FriendFragment());
                         break;
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getFragment(Fragment fragment){
+    public void getFragment(Fragment fragment) {
         try {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case RESULT_OK:
-                if (requestCode == Constant.REQUEST_CODE_SMS){
+                if (requestCode == Constant.REQUEST_CODE_SMS) {
                     messageList.add(new Message(data.getStringExtra(Constant.NAME_SEND)
                             , data.getStringExtra(Constant.CONTENT)
                             , data.getBooleanExtra(Constant.ICON, true)));
@@ -85,5 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         }
     }
+
+
 }
 

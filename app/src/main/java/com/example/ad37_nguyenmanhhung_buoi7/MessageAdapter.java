@@ -33,8 +33,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Message message = messageList.get(position);
-        holder.tvMessage.setText(message.getName()+": "+message.getMessage());
-        if (message.isIcon()){
+        holder.tvMessage.setText(message.getName() + ": " + message.getMessage());
+        if (message.isIcon()) {
             holder.imgType.setImageResource(R.drawable.ic_message);
         } else {
             holder.imgType.setImageResource(R.drawable.ic_email);
@@ -49,6 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvMessage;
         ImageView imgType;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMessage = itemView.findViewById(R.id.tvMessage);

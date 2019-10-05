@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,8 @@ public class MessageFragment extends Fragment {
     ArrayList<Message> messageList = new ArrayList<>();
     ArrayList<Friend> friendList = new ArrayList<>();
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class MessageFragment extends Fragment {
         rvMessageList = view.findViewById(R.id.rvMessageList);
         mSend = view.findViewById(R.id.mSend);
 
-        messageList = ((MainActivity)getActivity()).getMessageList();
+        messageList = ((MainActivity) getActivity()).getMessageList();
         messageAdapter = new MessageAdapter(messageList, getActivity());
         rvMessageList.setAdapter(messageAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -82,21 +85,4 @@ public class MessageFragment extends Fragment {
             }
         });
     }
-
-    /*@Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (resultCode) {
-            case RESULT_OK:
-                if (requestCode == Constant.REQUEST_CODE_SMS){
-                    messageList.add(new Message(data.getStringExtra(Constant.NAME_SEND)
-                            , data.getStringExtra(Constant.CONTENT), true));
-                    messageAdapter.notifyDataSetChanged();
-                } else{
-                    messageList.add(new Message(data.getStringExtra(Constant.NAME_SEND)
-                            , data.getStringExtra(Constant.CONTENT), false));
-                    messageAdapter.notifyDataSetChanged();
-                }
-        }
-    }*/
 }

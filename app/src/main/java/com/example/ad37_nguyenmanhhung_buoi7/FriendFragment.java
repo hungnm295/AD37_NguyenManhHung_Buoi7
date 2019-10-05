@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
+
 import static android.app.Activity.RESULT_OK;
 
 public class FriendFragment extends Fragment {
@@ -84,17 +88,16 @@ public class FriendFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddUpdateFriend.class);
-                intent.putExtra("name", "");
+                intent.putExtra(Constant.NAME, "");
                 startActivityForResult(intent, Constant.REQUEST_CODE_ADD);
             }
         });
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case RESULT_OK:
+            case Constant.RESULT_FRIEND:
                 if (requestCode == Constant.REQUEST_CODE_EDIT) {
                     friendList.set(mPosition, new Friend(data.getStringExtra("nameAE")
                             , friendList.get(mPosition).isIcon()));

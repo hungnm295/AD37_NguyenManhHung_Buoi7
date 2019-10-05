@@ -41,7 +41,7 @@ public class AddUpdateFriend extends AppCompatActivity {
                 String name = edtName.getText().toString();
                 if (!name.isEmpty()) {
                     intent1.putExtra("nameAE", name);
-                    setResult(RESULT_OK, intent1);
+                    setResult(Constant.RESULT_FRIEND, intent1);
                     finish();
                 } else {
                     Toast.makeText(AddUpdateFriend.this, "Please fill the name", Toast.LENGTH_SHORT).show();

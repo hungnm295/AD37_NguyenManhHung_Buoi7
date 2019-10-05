@@ -6,6 +6,7 @@ public class Constant {
     public static final int REQUEST_CODE_ADD = 111;
     public static final int REQUEST_CODE_SMS = 113;
     public static final int REQUEST_CODE_EMAIL = 114;
+    public static final int RESULT_FRIEND = 2;
     public static final String POSITION = "pos";
     public static final String FRIEND_LIST = "friend list";
     public static final String SEND = "send";
